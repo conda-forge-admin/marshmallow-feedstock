@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: marshmallow
-  version: "4.3.1"
+  version: 4.4.0
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/marshmallow-${{ version }}.tar.gz
-  sha256: fb6b8048af08d4ab061610d5b7d3696a7e4c95337dbda880edb9f95812cabc20
+  sha256: 9e6ffa8511012ca89732324c1c253efd7b4d35632dcbdf80aa793fe01804af3e
 
 build:
   number: 0
@@ -24,11 +24,6 @@ requirements:
     - pip
   run:
     - python >=${{ python_min }}
-    # for py <3.11 but have it here for all py to stay noarch
-    - backports-datetime-fromisoformat
-    # for py <3.11 but have it here for all py to stay noarch
-    - typing_extensions
-
 tests:
   - python:
       imports:
@@ -36,7 +31,7 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - "*"
+        - '*'
   - files:
       source:
         - pyproject.toml
